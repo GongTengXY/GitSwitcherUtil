@@ -14,7 +14,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/GongTengXY/git-config-switcher"
+    "url": "https://github.com/GongTengXY/GitSwitcherUtil"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
