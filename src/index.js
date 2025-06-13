@@ -118,16 +118,16 @@ const updateConfig = async () => {
 
   const { key } = await prompt([
       {
-          type: 'list',
-          name: 'key',
-          message: 'Select a configuration to update:',
-          choices: keys,
+        type: 'list',
+        name: 'key',
+        message: 'Select a configuration to update:',
+        choices: keys,
       },
   ]);
 
   const { name, email } = await prompt([
-      { type: 'input', name: 'name', message: 'Enter your new Git name:', default: configs[key].name },
-      { type: 'input', name: 'email', message: 'Enter your new Git email:', default: configs[key].email },
+    { type: 'input', name: 'name', message: 'Enter your new Git name:', default: configs[key].name },
+    { type: 'input', name: 'email', message: 'Enter your new Git email:', default: configs[key].email },
   ]);
 
   // 更新配置
@@ -149,10 +149,10 @@ const deleteConfig = async () => {
 
   const { key } = await prompt([
       {
-          type: 'list',
-          name: 'key',
-          message: 'Select a configuration to delete:',
-          choices: keys,
+        type: 'list',
+        name: 'key',
+        message: 'Select a configuration to delete:',
+        choices: keys,
       },
   ]);
 
@@ -167,10 +167,10 @@ const mainMenu = async () => {
   try {
     const { action } = await prompt([
         {
-            type: 'list',
-            name: 'action',
-            message: 'Select an action:',
-            choices: ['新增配置', '切换配置', '导出全部配置', '更新配置', "删除配置"],
+          type: 'list',
+          name: 'action',
+          message: 'Select an action:',
+          choices: ['新增配置', '切换配置', '导出全部配置', '更新配置', "删除配置"],
         },
     ]);
     switch (action) {

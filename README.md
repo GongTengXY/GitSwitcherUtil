@@ -10,15 +10,15 @@
 - **更新配置**: 更新指定的 Git 配置。
 - **删除配置**: 删除指定的 Git 配置。
 
-2. 全局安装该工具：
-
-   ```bash
-   npm install -g gitConfigSwitcher
-   ```
-
 ## 使用方法
 
-安装完成后，可以使用以下命令运行工具：
+1. 全局安装该工具：
+
+```bash
+npm install -g gitConfigSwitcher
+```
+
+2.安装完成后，可以使用以下命令运行工具：
 
 ```bash
 gitConfigSwitcher
