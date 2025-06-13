@@ -1,5 +1,5 @@
 {
-  "name": "gitconfigswitcher",
+  "name": "gitswitcherutil",
   "version": "1.0.0",
   "description": "A command-line tool to switch between different Git configurations.",
   "main": "src/index.js",
