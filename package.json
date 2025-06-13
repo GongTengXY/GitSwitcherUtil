@@ -4,7 +4,7 @@
   "description": "A command-line tool to switch between different Git configurations.",
   "main": "src/index.js",
   "bin": {
-    "gitConfigSwitcher": "./src/index.js"
+    "gitswitcherutil": "./src/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

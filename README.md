@@ -1,4 +1,4 @@
-# Git Config Switcher
+# Git Switcher Util
 
 一个命令行工具，用于轻松切换个人或工作用的不同 Git 配置。该工具允许你添加、切换、导出、更新和删除 Git 配置。
 
@@ -15,13 +15,13 @@
 1. 全局安装该工具：
 
 ```bash
-npm install -g gitConfigSwitcher
+npm install -g gitswitcherutil
 ```
 
 2.安装完成后，可以使用以下命令运行工具：
 
 ```bash
-gitConfigSwitcher
+gitswitcherutil
 ```
 
 ### 示例
