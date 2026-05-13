@@ -1,11 +1,24 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const path = require('path');
 const inquirer = require('inquirer');
-const configFilePath = './git-configs.json';
+const { execSync } = require('child_process');
+
+const configFilePath = path.join(__dirname, '..', 'git-configs.json');
 
 const prompt = inquirer.createPromptModule();
 
+// 获取当前 git 全局配置
+const getCurrentGitConfig = () => {
+  try {
+    const name = execSync('git config --global user.name', { encoding: 'utf-8' }).trim();
+    const email = execSync('git config --global user.email', { encoding: 'utf-8' }).trim();
+    return { name, email };
+  } catch {
+    return { name: '', email: '' };
+  }
+};
 
 // 读取配置文件
 const readConfigs = () => {
@@ -35,12 +48,17 @@ const switchConfig = async () => {
       return; // 退出函数
     }
 
+    // 找到当前配置对应的 key
+    const current = getCurrentGitConfig();
+    const defaultKey = keys.find(k => configs[k].name === current.name && configs[k].email === current.email);
+
     const { key } = await prompt([
         {
           type: 'list',
           name: 'key',
           message: 'Select a configuration to switch:',
           choices: keys,
+          default: defaultKey,
         },
     ]);
     const { name, email } = configs[key];
@@ -165,6 +183,14 @@ const deleteConfig = async () => {
 // 主菜单
 const mainMenu = async () => {
   try {
+    // 显示当前 git 身份
+    const current = getCurrentGitConfig();
+    if (current.name || current.email) {
+      console.log(`\n🔑 当前 Git 身份: ${current.name} <${current.email}>\n`);
+    } else {
+      console.log('\n⚠️  当前未设置 Git 全局身份\n');
+    }
+
     const { action } = await prompt([
         {
           type: 'list',
@@ -184,7 +210,7 @@ const mainMenu = async () => {
         case '导出全部配置':
             await exportConfig();
             break;
-        case '修改配置':
+        case '更新配置':
             await updateConfig();
             break;
         case '删除配置':
